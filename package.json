@@ -1,0 +1,41 @@
+{
+  "name": "saas-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@react-pdf/renderer": "^4.3.2",
+    "@tailwindcss/postcss": "^4.2.1",
+    "cloudinary": "^2.9.0",
+    "jose": "^5.4.1",
+    "lucide-react": "^0.575.0",
+    "next": "16.1.6",
+    "prisma": "^5.22.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "recharts": "^3.7.0",
+    "stripe": "^20.4.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "autoprefixer": "^9.8.8",
+    "bcryptjs": "^3.0.3",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "16.1.6",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.4.5"
+  }
+}

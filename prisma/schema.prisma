@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  MEMBER
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String // 👈 add this line
+  avatarUrl    String? // 👈 ADD THIS
+  role         UserRole      @default(MEMBER)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  clients      Client[]
+  invoices     Invoice[]
+  subscription Subscription?
+}
+
+model Client {
+  id        String    @id @default(uuid())
+  name      String
+  email     String?
+  company   String?
+  password  String? // 👈 add this line
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoices  Invoice[]
+
+  @@index([userId])
+}
+
+model Invoice {
+  id        String        @id @default(uuid())
+  amount    Decimal       @db.Decimal(10, 2)
+  status    InvoiceStatus @default(DRAFT)
+  issueDate DateTime      @default(now())
+  dueDate   DateTime
+  notes     String?
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clientId  String
+  client    Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([clientId])
+}
+
+model Subscription {
+  id                   String           @id @default(uuid())
+  plan                 SubscriptionPlan @default(FREE)
+  active               Boolean          @default(true)
+  renewalDate          DateTime?
+  stripeCustomerId     String? // 👈 add
+  stripeSubscriptionId String? // 👈 add
+  userId               String           @unique
+  user                 User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+}
