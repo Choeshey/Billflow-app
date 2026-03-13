@@ -68,8 +68,7 @@ export async function POST(request: NextRequest) {
             }
 
             // ── Admin subscription cancelled → downgrade to FREE ────────────────
-            case "customer.subscription.deleted": {
-                const subscription = event.data.object as Stripe.Subscription;
+            case "customer.subscription.deleted": {                const subscription = event.data.object as Stripe.Subscription;
                 await prisma.subscription.updateMany({
                     where: { stripeSubscriptionId: subscription.id },
                     data:  { plan: "FREE", active: false },
@@ -80,7 +79,7 @@ export async function POST(request: NextRequest) {
 
             // ── Admin subscription renewed ───────────────────────────────────────
             case "invoice.payment_succeeded": {
-                const inv            = event.data.object as Stripe.Invoice & { subscription?: string | null };
+                const inv            = event.data.object as Stripe.Invoice;
                 const subscriptionId = typeof inv.subscription === "string"
                     ? inv.subscription
                     : null;
