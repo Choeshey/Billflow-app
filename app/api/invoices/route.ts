@@ -65,7 +65,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     const invoice = await prisma.invoice.create({
       data: {
         amount:   Number(amount),
-        status:   (status as string) ?? "DRAFT",
+        status:   ((status as string) ?? "DRAFT") as InvoiceStatus,
         dueDate:  new Date(dueDate as string),
         notes:    (notes as string) ?? null,
         userId:   auth.sub,
