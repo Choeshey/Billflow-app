@@ -226,7 +226,8 @@ export async function GET(
 
         const buffer = await renderToBuffer(doc);
 
-        return new NextResponse(buffer, {
+        const uint8  = new Uint8Array(buffer);
+        return new NextResponse(uint8, {
             status: 200,
             headers: {
                 "Content-Type":        "application/pdf",
