@@ -25,8 +25,8 @@ export async function GET(
     data: {
       id:        client.id,
       name:      client.name,
-      email:     client.email ?? undefined,
-      company:   client.company ?? undefined,
+      email:     client.email ?? null,
+      company:   client.company ?? null,
       userId:    client.userId,
       createdAt: client.createdAt.toISOString(),
       updatedAt: client.updatedAt.toISOString(),
@@ -63,8 +63,8 @@ export async function PATCH(
     data: {
       id:        client.id,
       name:      client.name,
-      email:     client.email ?? undefined,
-      company:   client.company ?? undefined,
+      email:     client.email ?? null,
+      company:   client.company ?? null,
       userId:    client.userId,
       createdAt: client.createdAt.toISOString(),
       updatedAt: client.updatedAt.toISOString(),
