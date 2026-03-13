@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
-import type { ApiResponse, Invoice } from "@/lib/types";
+import type { ApiResponse, Invoice, InvoiceStatus } from "@/lib/types";
 import { getAuthUser } from "@/lib/server-utils";
 import { prisma } from "@/lib/prisma";
-import { canCreateInvoice } from "@/lib/plan";
+import { canCreateInvoice } from "@/lib/plans";
 
 // GET /api/invoices
 export async function GET(): Promise<NextResponse<ApiResponse<Invoice[]>>> {
