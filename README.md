@@ -108,3 +108,4 @@ src/
 UI Component → useHook → service function → Prisma → PostgreSQL
 ```
 No direct `fetch()` calls in UI components — all data goes through hooks.
+# Billflow-app
