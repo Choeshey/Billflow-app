@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { prisma }     from "@/lib/prisma";
-import { getSession } from "@/lib/getSession";
+import { prisma }      from "@/lib/prisma";
+import { getAuthUser } from "@/lib/server-utils";
 import type { ApiResponse, Invoice, InvoiceStatus } from "@/lib/types";
 
 interface Params { params: Promise<{ id: string }> }
@@ -26,12 +26,12 @@ export async function PATCH(
   request: NextRequest,
   { params }: Params
 ): Promise<NextResponse<ApiResponse<Invoice>>> {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+  const auth = await getAuthUser();
+  if (!auth) return NextResponse.json({ success: false, error: "Unauthorised." }, { status: 401 });
 
   const { id } = await params;
   const existing = await prisma.invoice.findUnique({ where: { id } });
-  if (!existing || existing.userId !== session.sub) {
+  if (!existing || existing.userId !== auth.sub) {
     return NextResponse.json({ success: false, error: "Not found." }, { status: 404 });
   }
 
@@ -59,12 +59,12 @@ export async function DELETE(
   _request: NextRequest,
   { params }: Params
 ): Promise<NextResponse<ApiResponse<null>>> {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+  const auth = await getAuthUser();
+  if (!auth) return NextResponse.json({ success: false, error: "Unauthorised." }, { status: 401 });
 
   const { id } = await params;
   const existing = await prisma.invoice.findUnique({ where: { id } });
-  if (!existing || existing.userId !== session.sub) {
+  if (!existing || existing.userId !== auth.sub) {
     return NextResponse.json({ success: false, error: "Not found." }, { status: 404 });
   }
 

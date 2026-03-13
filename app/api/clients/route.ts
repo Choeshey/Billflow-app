@@ -1,15 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { prisma }      from "@/lib/prisma";
-import { getSession }  from "@/lib/getSession";
+import { getAuthUser } from "@/lib/server-utils";
 import type { ApiResponse, Client } from "@/lib/types";
 
-// GET /api/clients
 export async function GET(): Promise<NextResponse<ApiResponse<Client[]>>> {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+  const auth = await getAuthUser();
+  if (!auth) return NextResponse.json({ success: false, error: "Unauthorised." }, { status: 401 });
 
   const rows = await prisma.client.findMany({
-    where:   { userId: session.sub },
+    where:   { userId: auth.sub },
     orderBy: { createdAt: "desc" },
     include: { _count: { select: { invoices: true } } },
   });
@@ -23,10 +22,9 @@ export async function GET(): Promise<NextResponse<ApiResponse<Client[]>>> {
   return NextResponse.json({ success: true, data: clients });
 }
 
-// POST /api/clients
 export async function POST(request: NextRequest): Promise<NextResponse<ApiResponse<Client>>> {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+  const auth = await getAuthUser();
+  if (!auth) return NextResponse.json({ success: false, error: "Unauthorised." }, { status: 401 });
 
   let body: unknown;
   try { body = await request.json(); } catch {
@@ -43,7 +41,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       name:    name.trim(),
       email:   typeof email   === "string" && email.trim()   ? email.trim()   : null,
       company: typeof company === "string" && company.trim() ? company.trim() : null,
-      userId:  session.sub,
+      userId:  auth.sub,
     },
     include: { _count: { select: { invoices: true } } },
   });
