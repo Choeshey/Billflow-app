@@ -10,7 +10,7 @@ import { formatCurrency, formatDate, formatDateInput } from "@/lib/utils";
 
 export default function InvoiceDetailPage() {
   const { id }  = useParams<{ id: string }>();
-  const { update, remove } = useInvoices();
+  const { updateStatus, remove } = useInvoices();
   const router  = useRouter();
 
   const [invoice,  setInvoice]  = useState<Invoice | null>(null);
@@ -39,7 +39,7 @@ export default function InvoiceDetailPage() {
   const handleSave = async (): Promise<void> => {
     setSaving(true);
     try {
-      const updated = await update(id, { status, dueDate, notes: notes || undefined });
+      const updated = await updateStatus(id, { status, dueDate, notes: notes || undefined });
       setInvoice(updated);
     } finally { setSaving(false); }
   };
