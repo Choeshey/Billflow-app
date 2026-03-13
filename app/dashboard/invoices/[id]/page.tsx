@@ -8,7 +8,7 @@ import { useInvoices } from "@/hooks/useInvoices";
 import { Card, Button, StatusBadge, Select, Spinner } from "@/components/ui";
 import { formatCurrency, formatDate, formatDateInput } from "@/lib/utils";
 
-export default function InvoiceDetailPage(): JSX.Element {
+export default function InvoiceDetailPage() {
   const { id }  = useParams<{ id: string }>();
   const { update, remove } = useInvoices();
   const router  = useRouter();
