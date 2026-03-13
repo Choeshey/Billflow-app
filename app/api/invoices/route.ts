@@ -23,10 +23,8 @@ export async function GET(): Promise<NextResponse<ApiResponse<Invoice[]>>> {
       issueDate: inv.issueDate.toISOString(),
       dueDate:   inv.dueDate.toISOString(),
       notes:     inv.notes ?? null,
-      clientId:  inv.clientId,
       client:    { id: inv.client.id, name: inv.client.name },
       createdAt: inv.createdAt.toISOString(),
-      updatedAt: inv.updatedAt.toISOString(),
     }));
 
     return NextResponse.json({ success: true, data });
@@ -80,10 +78,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       issueDate: invoice.issueDate.toISOString(),
       dueDate:   invoice.dueDate.toISOString(),
       notes:     invoice.notes ?? null,
-      clientId:  invoice.clientId,
       client:    { id: invoice.client.id, name: invoice.client.name },
       createdAt: invoice.createdAt.toISOString(),
-      updatedAt: invoice.updatedAt.toISOString(),
     };
 
     return NextResponse.json({ success: true, data }, { status: 201 });
