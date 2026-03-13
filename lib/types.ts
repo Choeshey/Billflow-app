@@ -1,7 +1,7 @@
 // ─── Enums (mirror Prisma enums) ──────────────────────────────────────────────
 
 export type UserRole         = "ADMIN" | "MEMBER";
-export type InvoiceStatus    = "DRAFT" | "SENT" | "PAID" | "OVERDUE" | "PENDING";
+export type InvoiceStatus    = "DRAFT" | "SENT" | "PAID" | "OVERDUE";
 export type SubscriptionPlan = "FREE"  | "PRO";
 
 // ─── Domain models ────────────────────────────────────────────────────────────
