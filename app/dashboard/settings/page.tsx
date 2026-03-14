@@ -11,7 +11,8 @@ import { formatDate } from "@/lib/utils";
 
 // @ts-ignore
 export default function SettingsPage() {
-    const { user, logout, setUser } = useAuth();
+    const { user, logout } = useAuth();
+  const [avatarUrl, setAvatarUrl] = useState<string | null | undefined>(user?.avatarUrl);
     const [sub,      setSub]      = useState<Subscription | null>(null);
     const [loading,  setLoading]  = useState(true);
     const [upgrading, setUpgrading] = useState(false);
@@ -49,7 +50,7 @@ export default function SettingsPage() {
                     {/* 👇 Avatar with upload — hover to see camera icon */}
                     <Avatar
                         name={user?.name ?? "User"}
-                        imageUrl={user?.avatarUrl}
+                        imageUrl={avatarUrl ?? user?.avatarUrl}
                         size="xl"
                         editable={true}
                         onUpload={(url) => {
