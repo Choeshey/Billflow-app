@@ -3,5 +3,5 @@ export { Input, Select, Textarea } from "./Input";
 export { Card }        from "./Card";
 export { StatusBadge } from "./Badge";
 export { Spinner }     from "./Spinner";
-export { Modal, ConfirmModal } from "./Modal";
+export { Modal } from "./Modal";
 export { Avatar } from "./Avatar"; // 👈 add this line;
