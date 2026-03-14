@@ -36,14 +36,14 @@ export default function NewInvoicePage() {
     if (Number(fields.amount) <= 0) { setError("Amount must be greater than 0."); return; }
     setError(null); setLoading(true);
     try {
-      const inv = await create({
+      await create({
         clientId: fields.clientId,
         amount:   fields.amount,
         status:   fields.status,
         dueDate:  fields.dueDate,
         notes:    fields.notes || "",
       });
-      router.push(`/dashboard/invoices/${inv.id}`);
+      router.push("/dashboard/invoices");
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed.");
     } finally { setLoading(false); }
