@@ -39,8 +39,8 @@ export default function InvoiceDetailPage() {
   const handleSave = async (): Promise<void> => {
     setSaving(true);
     try {
-      const updated = await updateStatus(id, { status, dueDate, notes: notes || undefined });
-      setInvoice(updated);
+      await updateStatus(id, status);
+
     } finally { setSaving(false); }
   };
 
