@@ -14,7 +14,7 @@ export async function getDashboardStats(userId: string): Promise<DashboardStats>
   const pendingAmount = invoices.filter((i) => i.status === "SENT" || i.status === "DRAFT").reduce((s, i) => s + Number(i.amount), 0);
   const overdueCount  = invoices.filter((i) => i.status === "OVERDUE").length;
   const recentInvoices = invoices.slice(0, 5).map((i) => ({
-    id: i.id, amount: i.amount.toString(), status: i.status as DashboardStats["recentInvoices"][number]["status"],
+    id: i.id, amount: Number(i.amount), status: i.status as DashboardStats["recentInvoices"][number]["status"],
     issueDate: i.issueDate.toISOString(), dueDate: i.dueDate.toISOString(), notes: i.notes,
     userId: i.userId, clientId: i.clientId, client: i.client ?? undefined,
     createdAt: i.createdAt.toISOString(), updatedAt: i.updatedAt.toISOString(),
