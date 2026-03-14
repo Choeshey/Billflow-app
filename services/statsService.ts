@@ -19,5 +19,5 @@ export async function getDashboardStats(userId: string): Promise<DashboardStats>
     userId: i.userId, clientId: i.clientId, client: i.client ?? undefined,
     createdAt: i.createdAt.toISOString(), updatedAt: i.updatedAt.toISOString(),
   }));
-  return { totalRevenue, totalClients: clientCount, totalInvoices: invoices.length, overdueCount, pendingAmount, recentInvoices };
+  return { totalRevenue, totalClients: clientCount, activeInvoices: invoices.filter(i => i.status === "DRAFT" || i.status === "SENT").length, overdueAmount: invoices.filter(i => i.status === "OVERDUE").reduce((s, i) => s + Number(i.amount), 0), recentInvoices };
 }
