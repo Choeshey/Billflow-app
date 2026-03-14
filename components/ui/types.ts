@@ -3,7 +3,7 @@ export interface User {
     id:        string;
     name:      string;
     email:     string;
-    role:      UserRole;
+    role:      string;
     createdAt: string;
 }
 
@@ -12,7 +12,7 @@ export interface User {
     id:         string;
     name:       string;
     email:      string;
-    role:       UserRole;
+    role:       string;
     avatarUrl?: string | null; // 👈 add this line
     createdAt:  string;
 }
