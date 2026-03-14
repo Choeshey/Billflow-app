@@ -38,7 +38,7 @@ export default function NewInvoicePage() {
     try {
       const inv = await create({
         clientId: fields.clientId,
-        amount:   parseFloat(fields.amount),
+        amount:   fields.amount,
         status:   fields.status,
         dueDate:  fields.dueDate,
         notes:    fields.notes || undefined,
