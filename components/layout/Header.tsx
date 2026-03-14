@@ -5,7 +5,7 @@ interface HeaderProps {
   onMenuClick: () => void;
 }
 
-export function Header({ title, onMenuClick }: HeaderProps): JSX.Element {
+export function Header({ title, onMenuClick }: HeaderProps) {
   return (
     <header className="sticky top-0 z-10 flex items-center gap-4 h-16 px-4 lg:px-6 bg-white/90 border-b border-slate-100 backdrop-blur-md">
       <button

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 // @ts-ignore
-export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-slate-50 text-slate-900 antialiased"

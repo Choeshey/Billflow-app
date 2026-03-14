@@ -13,7 +13,7 @@ interface Fields {
 }
 
 // @ts-ignore
-export default function RegisterPage(): JSX.Element {
+export default function RegisterPage() {
   const router = useRouter();
   const [fields,  setFields]  = useState<Fields>({ name: "", email: "", password: "", confirmPassword: "" });
   const [error,   setError]   = useState<string | null>(null);

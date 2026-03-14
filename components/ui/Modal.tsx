@@ -13,7 +13,7 @@ interface ModalProps {
 
 const sizes = { sm: "max-w-sm", md: "max-w-lg", lg: "max-w-2xl" };
 
-export function Modal({ open, onClose, title, children, size = "md" }: ModalProps): JSX.Element | null {
+export function Modal({ open, onClose, title, children, size = "md" }: ModalProps) {
   if (!open) return null;
 
   return (

@@ -7,7 +7,7 @@ interface EmptyStateProps {
   action?:  ReactNode;
 }
 
-export function EmptyState({ icon = "📄", title, detail, action }: EmptyStateProps): JSX.Element {
+export function EmptyState({ icon = "📄", title, detail, action }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center gap-3">
       <span className="text-4xl" aria-hidden="true">{icon}</span>

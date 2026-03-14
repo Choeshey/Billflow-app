@@ -31,7 +31,7 @@ const S: Record<Size, string> = {
 export function Button({
   variant = "primary", size = "md", isLoading = false,
   leftIcon, fullWidth = false, disabled, className, children, ...rest
-}: ButtonProps): JSX.Element {
+}: ButtonProps) {
   const off = (disabled ?? false) || isLoading;
   return (
     <button

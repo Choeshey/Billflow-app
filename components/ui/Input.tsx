@@ -13,7 +13,7 @@ interface FieldProps {
   id:       string;
 }
 
-function Field({ label, hint, error, children, id }: FieldProps): JSX.Element {
+function Field({ label, hint, error, children, id }: FieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-sm font-medium text-slate-700">{label}</label>
@@ -29,7 +29,7 @@ function Field({ label, hint, error, children, id }: FieldProps): JSX.Element {
 interface InputOwnProps { label: string; hint?: string; error?: string; }
 export type InputProps = InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
 
-export function Input({ label, hint, error, id, className, ...rest }: InputProps): JSX.Element {
+export function Input({ label, hint, error, id, className, ...rest }: InputProps) {
   const fid = id ?? `f-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <Field label={label} hint={hint} error={error} id={fid}>
@@ -44,7 +44,7 @@ export function Input({ label, hint, error, id, className, ...rest }: InputProps
 interface SelectOwnProps { label: string; hint?: string; error?: string; children: ReactNode; }
 export type SelectProps = SelectOwnProps & SelectHTMLAttributes<HTMLSelectElement>;
 
-export function Select({ label, hint, error, id, className, children, ...rest }: SelectProps): JSX.Element {
+export function Select({ label, hint, error, id, className, children, ...rest }: SelectProps) {
   const fid = id ?? `f-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <Field label={label} hint={hint} error={error} id={fid}>
@@ -61,7 +61,7 @@ export function Select({ label, hint, error, id, className, children, ...rest }:
 interface TextareaOwnProps { label: string; hint?: string; error?: string; }
 export type TextareaProps = TextareaOwnProps & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-export function Textarea({ label, hint, error, id, className, ...rest }: TextareaProps): JSX.Element {
+export function Textarea({ label, hint, error, id, className, ...rest }: TextareaProps) {
   const fid = id ?? `f-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <Field label={label} hint={hint} error={error} id={fid}>

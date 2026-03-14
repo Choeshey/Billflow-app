@@ -33,7 +33,7 @@ function formatDate(date: string): string {
 }
 
 // @ts-ignore
-export default function ClientInvoiceDetailPage(): JSX.Element {
+export default function ClientInvoiceDetailPage() {
     const { id }       = useParams<{ id: string }>();
     const router       = useRouter();
     const searchParams = useSearchParams();

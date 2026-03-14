@@ -16,7 +16,7 @@ const NAV = [
 interface SidebarProps { isOpen: boolean; onClose: () => void; }
 
 // @ts-ignore
-export function Sidebar({ isOpen, onClose }: SidebarProps): JSX.Element {
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname       = usePathname();
   const { user, logout } = useAuth();
 

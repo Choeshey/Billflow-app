@@ -4,7 +4,7 @@ import { type FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 // @ts-ignore
-export default function ClientLoginPage(): JSX.Element {
+export default function ClientLoginPage() {
     const router = useRouter();
     const [email,    setEmail]    = useState("");
     const [password, setPassword] = useState("");

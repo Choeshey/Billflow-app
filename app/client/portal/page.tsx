@@ -36,7 +36,7 @@ function formatDate(date: string): string {
 }
 
 // @ts-ignore
-export default function ClientPortalPage(): JSX.Element {
+export default function ClientPortalPage() {
     const router = useRouter();
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [summary,  setSummary]  = useState<Summary | null>(null);

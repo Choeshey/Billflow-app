@@ -7,7 +7,7 @@ const sizes: Record<Size, string> = {
   lg: "w-9 h-9 border-[3px]",
 };
 
-export function Spinner({ size = "md", className }: { size?: Size; className?: string }): JSX.Element {
+export function Spinner({ size = "md", className }: { size?: Size; className?: string }) {
   return (
     <span
       role="status"
