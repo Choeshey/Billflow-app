@@ -54,7 +54,7 @@ export default function SettingsPage() {
                         size="xl"
                         editable={true}
                         onUpload={(url) => {
-                            if (setUser) setUser((u: typeof user) => u ? { ...u, avatarUrl: url } : u);
+                            setAvatarUrl(url);
                         }}
                     />
                     <div>
