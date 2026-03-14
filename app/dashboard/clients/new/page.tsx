@@ -9,7 +9,7 @@ import { Card, Input, Button } from "@/components/ui";
 interface Fields { name: string; email: string; company: string; }
 
 // @ts-ignore
-export default function NewClientPage(): JSX.Element {
+export default function NewClientPage() {
   const { create } = useClients();
   const router = useRouter();
   const [fields,  setFields]  = useState<Fields>({ name: "", email: "", company: "" });

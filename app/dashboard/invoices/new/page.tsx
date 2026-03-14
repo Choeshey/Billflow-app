@@ -9,7 +9,7 @@ import { Card, Input, Select, Button, Textarea } from "@/components/ui";
 
 interface Fields { clientId: string; amount: string; status: InvoiceStatus; dueDate: string; notes: string; }
 
-export default function NewInvoicePage(): JSX.Element {
+export default function NewInvoicePage() {
   const { create }     = useInvoices();
   const router         = useRouter();
   const searchParams   = useSearchParams();

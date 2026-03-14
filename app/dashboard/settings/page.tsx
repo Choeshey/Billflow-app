@@ -10,7 +10,7 @@ import type { Subscription, SubscriptionPlan } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 
 // @ts-ignore
-export default function SettingsPage(): JSX.Element {
+export default function SettingsPage() {
     const { user, logout, setUser } = useAuth();
     const [sub,      setSub]      = useState<Subscription | null>(null);
     const [loading,  setLoading]  = useState(true);
@@ -140,7 +140,7 @@ function PlanCard({ name, price, features, current, onSelect, loading, highlight
     onSelect:  () => void;
     loading:   boolean;
     highlight?: boolean;
-}): JSX.Element {
+}) {
     return (
         <div className={`border rounded-xl p-4 ${highlight ? "border-indigo-200 bg-indigo-50/40" : "border-slate-200"}`}>
             <div className="flex items-center justify-between mb-1">

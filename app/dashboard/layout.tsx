@@ -14,7 +14,7 @@ const TITLES: Record<string, string> = {
   "/dashboard/settings": "Settings",
 };
 
-export default function DashboardLayout({ children }: { children: ReactNode }): JSX.Element {
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { user, loading }     = useAuth();
   const router                = useRouter();
   const [sidebar, setSidebar] = useState(false);

@@ -10,7 +10,7 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import { SetClientPassword } from "@/components/dashboard/SetClientPassword";
 
 // @ts-ignore
-export default function ClientDetailPage(): JSX.Element {
+export default function ClientDetailPage() {
   const { id }  = useParams<{ id: string }>();
   const { update } = useClients();
   const router = useRouter();

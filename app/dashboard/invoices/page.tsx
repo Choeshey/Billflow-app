@@ -21,7 +21,7 @@ const EMPTY: CreateInvoiceForm = {
 };
 
 // @ts-ignore
-export default function InvoicesPage(): JSX.Element {
+export default function InvoicesPage() {
   const { state, create, updateStatus, remove } = useInvoices();
   const { state: clientState }                  = useClients();
   const [modal,      setModal]     = useState(false);

@@ -15,7 +15,7 @@ import type { CreateClientForm } from "@/lib/types";
 const EMPTY_FORM: CreateClientForm = { name: "", email: "", company: "" };
 
 // @ts-ignore
-export default function ClientsPage(): JSX.Element {
+export default function ClientsPage() {
   const { state, create, remove } = useClients();
   const [modal,      setModal]    = useState(false);
   const [form,       setForm]     = useState<CreateClientForm>(EMPTY_FORM);
