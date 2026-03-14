@@ -74,9 +74,7 @@ export default function InvoiceDetailPage() {
         <Card>
           <p className="text-xs text-slate-400 uppercase tracking-wider mb-2">Client</p>
           <p className="font-semibold text-slate-800 text-lg">{invoice.client?.name ?? "—"}</p>
-          {invoice.client?.company !== null && invoice.client?.company !== undefined && (
-            <p className="text-sm text-slate-500">{invoice.client.company}</p>
-          )}
+          
           <Link
             href={`/dashboard/clients/${invoice.clientId}`}
             className="inline-block mt-2 text-xs text-indigo-600 hover:underline"
