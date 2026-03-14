@@ -41,7 +41,7 @@ export default function NewInvoicePage() {
         amount:   fields.amount,
         status:   fields.status,
         dueDate:  fields.dueDate,
-        notes:    fields.notes || undefined,
+        notes:    fields.notes || null,
       });
       router.push(`/dashboard/invoices/${inv.id}`);
     } catch (err: unknown) {
