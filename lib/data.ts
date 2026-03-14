@@ -29,7 +29,7 @@ export const SEED_INVOICES: Invoice[] = [
   {
     id:        "inv_002",
     amount:    4_800,
-    status:    "PENDING",
+    status:    "SENT",
     issueDate: "2025-05-10T08:30:00Z",
     dueDate:   "2025-05-24T08:30:00Z",
     notes:     null,
@@ -68,7 +68,7 @@ export const SEED_INVOICES: Invoice[] = [
   {
     id:        "inv_005",
     amount:    1_950,
-    status:    "PENDING",
+    status:    "SENT",
     issueDate: "2025-05-20T09:00:00Z",
     dueDate:   "2025-06-03T09:00:00Z",
     notes:     "Consulting services",
