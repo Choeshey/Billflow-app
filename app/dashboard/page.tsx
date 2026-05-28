@@ -9,6 +9,7 @@ import {
     DollarSign, Users, TrendingUp,
     ArrowUpRight, ArrowDownRight, Clock, CheckCircle,
 } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Stats {
@@ -22,7 +23,7 @@ interface Stats {
 interface RevenuePoint { month: string; revenue: number; }
 interface StatusPoint  { name: string; value: number; color: string; }
 
-// ── Stat Card ──────────────────────────────────────────────────────────────
+// ── Stat Card ──────────────────────────────────────────────────────────
 function StatCard({
                       title, value, icon: Icon, change, prefix = "", color,
                   }: {
@@ -93,10 +94,10 @@ export default function DashboardPage() {
 
             {/* Stat Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                <StatCard title="Total Revenue"    value={stats?.totalRevenue ?? 0}   icon={DollarSign}    change={stats?.revenueChange} prefix="$" color="bg-violet-500" />
+                <StatCard title="Total Revenue"    value={stats?.totalRevenue ?? 0}   icon={DollarSign}    change={stats?.revenueChange} prefix="₹" color="bg-violet-500" />
                 <StatCard title="Total Clients"    value={stats?.totalClients ?? 0}   icon={Users}         change={stats?.clientChange}              color="bg-blue-500"   />
                 <StatCard title="Unpaid Invoices"  value={stats?.unpaidInvoices ?? 0} icon={Clock}                                                    color="bg-amber-500"  />
-                <StatCard title="Paid This Month"  value={stats?.paidThisMonth ?? 0}  icon={CheckCircle}                             prefix="$"         color="bg-emerald-500"/>
+                <StatCard title="Paid This Month"  value={stats?.paidThisMonth ?? 0}  icon={CheckCircle}                             prefix="₹"         color="bg-emerald-500"/>
             </div>
 
             {/* Charts Row */}
@@ -121,10 +122,10 @@ export default function DashboardPage() {
                             <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                             <XAxis dataKey="month" tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
                             <YAxis tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false}
-                                   tickFormatter={(v: number) => `$${v.toLocaleString()}`} />
+                                   tickFormatter={(v: number) => `₹${v.toLocaleString('en-IN')}`} />
                             <Tooltip
                                 contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}
-                                formatter={(v: number | undefined) => [`$${(v ?? 0).toLocaleString()}`, "Revenue"]}
+                                formatter={(v: number | undefined) => [`₹${(v ?? 0).toLocaleString('en-IN')}`, "Revenue"]}
                             />
                             <Area type="monotone" dataKey="revenue" stroke="#8b5cf6" strokeWidth={2}
                                   fill="url(#revenueGrad)" dot={{ fill: "#8b5cf6", r: 3 }} activeDot={{ r: 5 }} />
